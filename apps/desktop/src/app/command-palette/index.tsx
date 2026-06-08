@@ -48,7 +48,8 @@ import {
   PROFILES_ROUTE,
   sessionRoute,
   SETTINGS_ROUTE,
-  SKILLS_ROUTE
+  SKILLS_ROUTE,
+  STEWARTOS_ROUTE
 } from '../routes'
 import { FIELD_LABELS, SECTIONS } from '../settings/constants'
 import { fieldCopyForSchemaKey } from '../settings/field-copy'
@@ -225,6 +226,7 @@ export function CommandPalette() {
           },
           { icon: MessageCircle, id: 'nav-messaging', label: cc.nav.messaging.title, run: go(MESSAGING_ROUTE) },
           { icon: Package, id: 'nav-artifacts', label: cc.nav.artifacts.title, run: go(ARTIFACTS_ROUTE) },
+          { icon: Monitor, id: 'nav-stewartos', keywords: ['botler', 'operator', 'dashboard', 'proof'], label: 'StewartOS', run: go(STEWARTOS_ROUTE) },
           { icon: Clock, id: 'nav-cron', keywords: ['schedule', 'jobs'], label: t.shell.statusbar.cron, run: go(CRON_ROUTE) },
           { icon: Users, id: 'nav-profiles', label: t.profiles.title, run: go(PROFILES_ROUTE) },
           { icon: Cpu, id: 'nav-agents', label: t.agents.title, run: go(AGENTS_ROUTE) }

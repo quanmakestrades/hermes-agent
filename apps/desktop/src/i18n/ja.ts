@@ -1187,7 +1187,8 @@ export const ja = defineLocale({
       'new-session': '新しいセッション',
       skills: 'スキルとツール',
       messaging: 'メッセージング',
-      artifacts: 'アーティファクト'
+      artifacts: 'アーティファクト',
+      stewartos: 'StewartOS'
     },
     searchAria: 'セッションを検索',
     searchPlaceholder: 'セッションを検索…',

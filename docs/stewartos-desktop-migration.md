@@ -26,6 +26,8 @@ Useful entry points:
 
 - `apps/desktop/src/app/index.tsx` - app route shell
 - `apps/desktop/src/app/routes.ts` - route identifiers
+- `apps/desktop/src/app/stewartos/index.tsx` - StewartOS operator surface
+- `apps/desktop/src/app/stewartos/registry.ts` - seeded StewartOS surface registry
 - `apps/desktop/src/app/artifacts/index.tsx` - artifact/review surface
 - `apps/desktop/src/app/cron/index.tsx` - scheduler surface
 - `apps/desktop/src/app/messaging/index.tsx` - messaging/platform surface
@@ -89,11 +91,16 @@ Rules:
 - Desktop actions that send externally, post publicly, spend money, trade, or message customers still require explicit approval.
 - Desktop should make proof visible before any claim is treated as complete.
 
-## First Source Edits To Expect
+## First Source Edits Landed
 
-- Add a StewartOS artifact registry data source.
-- Add a dashboard/artifacts route that can display registered local files and URLs.
+- Added `/stewartos` as a main desktop route and sidebar/command-palette target.
+- Seeded the first StewartOS registry with local dashboards, reports, proof screenshots, operator queues, Obsidian references, and agent lanes.
+- Hardened desktop Python selection so POSIX boots do not choose unsupported Python 3.9 when the project requires Python 3.11-3.13.
+
+## Next Source Edits To Expect
+
 - Add operator-home widgets for agent health and today’s active queue.
+- Replace the static StewartOS registry seed with a local reader that scans known workspace roots.
 - Add durable URL labels for localhost, LAN, Tailscale, deployed, and ephemeral tunnel surfaces.
 - Add action handlers for “open locally,” “copy Telegram summary,” “mark proof verified,” and “open source folder.”
 
@@ -103,6 +110,8 @@ From repo root:
 
 ```bash
 npm install
+uv venv --python 3.12 .venv
+uv pip install -e .
 cd apps/desktop
 npm run dev
 ```
@@ -110,7 +119,7 @@ npm run dev
 Sandboxed development:
 
 ```bash
-HERMES_HOME=/tmp/hermes-stewartos-dev HERMES_DESKTOP_HERMES_ROOT=/Users/stewartos/Developer/hermes-agent npm run dev
+HERMES_HOME=/tmp/hermes-stewartos-dev HERMES_DESKTOP_HERMES_ROOT=/Users/stewartos/Developer/hermes-agent npm run dev --workspace apps/desktop
 ```
 
 ## Verification Before PRs

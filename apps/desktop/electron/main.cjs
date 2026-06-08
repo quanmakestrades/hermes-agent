@@ -1011,7 +1011,7 @@ function isHermesSourceRoot(root) {
 
 function findPythonForRoot(root) {
   const override = process.env.HERMES_DESKTOP_PYTHON
-  if (override && fileExists(override)) return override
+  if (override && fileExists(override) && isSupportedPython(override)) return override
 
   const relativePaths = IS_WINDOWS
     ? [path.join('.venv', 'Scripts', 'python.exe'), path.join('venv', 'Scripts', 'python.exe')]
@@ -1019,18 +1019,33 @@ function findPythonForRoot(root) {
 
   for (const relativePath of relativePaths) {
     const candidate = path.join(root, relativePath)
-    if (fileExists(candidate)) return candidate
+    if (fileExists(candidate) && isSupportedPython(candidate)) return candidate
   }
 
   return findSystemPython()
 }
 
+function isSupportedPython(candidate) {
+  if (!candidate) return false
+
+  try {
+    const out = execFileSync(
+      candidate,
+      ['-c', 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}")'],
+      { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }
+    ).trim()
+    return ['3.11', '3.12', '3.13'].includes(out)
+  } catch {
+    return false
+  }
+}
+
 function findSystemPython() {
   if (!IS_WINDOWS) {
-    // POSIX systems: PATH lookup is safe.
+    // POSIX systems: PATH lookup is safe, but Hermes requires Python 3.11-3.13.
     for (const command of ['python3', 'python']) {
       const candidate = findOnPath(command)
-      if (candidate) return candidate
+      if (candidate && isSupportedPython(candidate)) return candidate
     }
     return null
   }
