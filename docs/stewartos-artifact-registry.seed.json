@@ -1,0 +1,62 @@
+{
+  "schema": "stewartos.artifact-registry.seed.v1",
+  "created": "2026-06-08",
+  "purpose": "Seed inventory for moving StewartOS visual surfaces into Hermes Desktop.",
+  "surfaces": [
+    {
+      "id": "no-website-calls-2026-06-08",
+      "title": "Local No-Website Cold Call Board",
+      "ownerAgent": "botler",
+      "sourcePath": "/Users/stewartos/.openclaw/agents/botler/workspace/work/local-no-website-leads-2026-06-07/index.html",
+      "preferredUrl": "http://127.0.0.1:8773/work/local-no-website-leads-2026-06-07/index.html",
+      "proofPath": "/Users/stewartos/.openclaw/agents/botler/workspace/work/local-no-website-leads-2026-06-07/dashboard-smoke.png",
+      "freshnessRule": "Relevant for 2026-06-08 cold calls; refresh ranking before reuse on a later day.",
+      "actions": ["open", "copy-summary", "open-source-folder"],
+      "telegramStillUseful": true
+    },
+    {
+      "id": "jim-latency-2026-06-08",
+      "title": "Jim Latency Repair Report",
+      "ownerAgent": "botler",
+      "sourcePath": "/Users/stewartos/.openclaw/agents/botler/workspace/reports/jim-latency/latest.md",
+      "preferredUrl": null,
+      "proofPath": null,
+      "freshnessRule": "Current until Jim direct Telegram context is compacted/reset and a fresh bounded lane is verified.",
+      "actions": ["open", "copy-summary"],
+      "telegramStillUseful": true
+    },
+    {
+      "id": "sonda-dashboard-local",
+      "title": "Sonda Member Dashboard",
+      "ownerAgent": "botler",
+      "sourcePath": "/Users/stewartos/.openclaw/agents/botler/workspace/out/sonda-audit/local-dashboard.png",
+      "preferredUrl": "http://127.0.0.1:8765",
+      "proofPath": "/Users/stewartos/.openclaw/agents/botler/workspace/out/sonda-audit/local-dashboard.png",
+      "freshnessRule": "Local route only; Cloudflare tunnel is ephemeral and must not be treated as durable.",
+      "actions": ["open", "copy-summary", "verify-http"],
+      "telegramStillUseful": true
+    },
+    {
+      "id": "content-strategy-dashboard-2026-06",
+      "title": "Product Content Strategy Dashboard",
+      "ownerAgent": "botler",
+      "sourcePath": "/Users/stewartos/.openclaw/agents/botler/workspace/work/content-strategy-dashboard-2026-06/index.html",
+      "preferredUrl": "http://127.0.0.1:8766/work/content-strategy-dashboard-2026-06/index.html",
+      "proofPath": null,
+      "freshnessRule": "Refresh when product launch queue changes.",
+      "actions": ["open", "open-source-folder"],
+      "telegramStillUseful": true
+    },
+    {
+      "id": "dev-red-doc-latest",
+      "title": "Dev Red/Doc Manager Latest",
+      "ownerAgent": "dev",
+      "sourcePath": "/Users/stewartos/.openclaw/agents/botler/workspace/reports/dev-red-doc/latest.md",
+      "preferredUrl": null,
+      "proofPath": null,
+      "freshnessRule": "Healthy only if the report is fresh for the expected cadence and backed by Red/Doc ledger entries.",
+      "actions": ["open", "copy-summary"],
+      "telegramStillUseful": false
+    }
+  ]
+}
